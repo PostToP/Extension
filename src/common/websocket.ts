@@ -25,7 +25,7 @@ export interface WebSocketResponse {
   d: WebsocketData;
 }
 
-interface WebsocketData extends Object { }
+interface WebsocketData extends Object {}
 
 export interface VideoRequestData extends WebsocketData {
   watchID: string;

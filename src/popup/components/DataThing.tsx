@@ -1,15 +1,11 @@
-import { useContext } from "preact/hooks";
-import { CurrentlyPlayingContext } from "../context/CurrentlyPlayingContext";
+import {useContext} from "preact/hooks";
+import {CurrentlyPlayingContext} from "../context/CurrentlyPlayingContext";
 
 export default function DataThing() {
   const currentlyPlaying = useContext(CurrentlyPlayingContext);
   console.log("Rendering DataThing with currentlyPlaying:", currentlyPlaying);
   if (!currentlyPlaying?.watchID) {
-    return (
-      <div className="text-center text-gray-500">
-        Nothings playing right now.
-      </div>
-    );
+    return <div className="text-center text-gray-500">Nothings playing right now.</div>;
   }
 
   return (
@@ -32,13 +28,7 @@ export default function DataThing() {
         </p>
       </div>
 
-      {
-        currentlyPlaying.NER === undefined && (
-          <div className="text-center text-gray-500 mt-4">
-            Loading NER data...
-          </div>
-        )
-      }
+      {currentlyPlaying.NER === undefined && <div className="text-center text-gray-500 mt-4">Loading NER data...</div>}
       {currentlyPlaying.isMusic?.is_music && (
         <div>
           <div>

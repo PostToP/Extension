@@ -1,8 +1,8 @@
-import { CurrentlyPlaying } from "../../common/CurrentlyPlaying";
-import { RequestOperationType, ResponseOperationType, type VideoResponseData } from "../../common/websocket";
-import { chromeSendMessage } from "../Chrome";
-import { updateIcon } from "../icon";
-import { log } from "../log";
+import {CurrentlyPlaying} from "../../common/CurrentlyPlaying";
+import {RequestOperationType, ResponseOperationType, type VideoResponseData} from "../../common/websocket";
+import {chromeSendMessage} from "../Chrome";
+import {updateIcon} from "../icon";
+import {log} from "../log";
 
 export let webSocket: WebSocket | null = null;
 export let serverAddress: string = "localhost:8000";

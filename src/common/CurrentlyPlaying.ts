@@ -29,7 +29,7 @@ export class CurrentlyPlaying {
     VOCALIST: string[];
     ALT_TITLE: string[];
     ALBUM: string[];
-  }
+  };
 
   public static copy(copy: CurrentlyPlaying) {
     const newCurrentlyPlaying = new CurrentlyPlaying();
