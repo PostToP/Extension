@@ -34,6 +34,11 @@ export default function CurrentlyPlayingProvider({children}: {children: preact.C
 
   function updateCurrentlyPlaying(newCP: CurrentlyPlaying) {
     setCurrentlyPlaying(prev => {
+      if (prev?.watchID !== newCP.watchID) {
+        const newCp = new CurrentlyPlaying();
+        newCp.setValues(newCP);
+        return newCp;
+      }
       const updated = prev ? CurrentlyPlaying.copy(prev) : new CurrentlyPlaying();
       updated.setValues(newCP);
       return updated;
