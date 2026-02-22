@@ -3,6 +3,14 @@ import { CurrentlyPlayingContext } from "../context/CurrentlyPlayingContext";
 
 export default function DataThing() {
   const currentlyPlaying = useContext(CurrentlyPlayingContext);
+  console.log("Rendering DataThing with currentlyPlaying:", currentlyPlaying);
+  if (!currentlyPlaying?.watchID) {
+    return (
+      <div className="text-center text-gray-500">
+        Nothings playing right now.
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-lg p-2">
@@ -14,7 +22,9 @@ export default function DataThing() {
           )}
         </h3>
         <p className="text-center text-xl font-bold">
-          {currentlyPlaying?.isMusic?.is_music ? (
+          {currentlyPlaying.isMusic?.is_music === undefined ? (
+            <span className="text-gray-500">Loading</span>
+          ) : currentlyPlaying.isMusic?.is_music ? (
             <span className="text-green-600">Yes</span>
           ) : (
             <span className="text-red-600">No</span>
@@ -22,7 +32,14 @@ export default function DataThing() {
         </p>
       </div>
 
-      {currentlyPlaying?.isMusic?.is_music && (
+      {
+        currentlyPlaying.NER === undefined && (
+          <div className="text-center text-gray-500 mt-4">
+            Loading NER data...
+          </div>
+        )
+      }
+      {currentlyPlaying.isMusic?.is_music && (
         <div>
           <div>
             <h3 className="text-lg font-semibold text-center">Named Entities</h3>
