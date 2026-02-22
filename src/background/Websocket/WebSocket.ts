@@ -28,6 +28,13 @@ export function connect() {
     log.warn("WebSocket connection closed");
     webSocket = null;
     updateIcon(false);
+    currentlyListening.clear();
+    chromeSendMessage("VIDEO_UPDATE", {
+      value: currentlyListening.safe(),
+    });
+    setTimeout(() => {
+      connect();
+    }, 1000);
   };
 }
 
