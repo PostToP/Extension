@@ -18,6 +18,24 @@ function handleUpdated(tabId: any, changeInfo: any, tabInfo: any) {
   }
 }
 
+function injectIntoExistingTabs() {
+  chrome.tabs.query({}, (tabs: any) => {
+    tabs.forEach((tab: any) => {
+      if (
+        (listenOnYtMusic && tab.url.startsWith("https://music.youtube.com/")) ||
+        (listenOnYt && tab.url.startsWith("https://www.youtube.com/watch?v="))
+      ) {
+        chrome.scripting.executeScript({
+          target: {tabId: tab.id},
+          files: ["js/content_script.js"],
+        });
+      }
+    });
+  });
+}
+
+injectIntoExistingTabs();
+
 SettingsRepository.observeSetting("yt").then(value => {
   listenOnYt = value;
 });
