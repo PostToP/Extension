@@ -11,7 +11,7 @@ export default class Youtube extends MusicService {
   }
 
   private static async getWatchID() {
-    return Youtube.getWatchIDURL() ?? Youtube.getWatchIDMiniplayer() ?? "Unknown";
+    return Youtube.getWatchIDURL() ?? Youtube.getWatchIDMiniplayer();
   }
 
   private static getWatchIDMiniplayer() {

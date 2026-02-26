@@ -11,12 +11,12 @@ export default class YoutubeMusic extends MusicService {
   }
 
   private static async getWatchID() {
-    const watchID =
-      YoutubeMusic.getWatchIDURL() ??
-      document
-        .querySelector<HTMLAnchorElement>("a.ytp-title-link.yt-uix-sessionlink")
-        ?.href.match(/v=([^&#]{5,})/)?.[1] ??
-      "Unknown";
-    return watchID;
+    return YoutubeMusic.getWatchIDURL() ?? YoutubeMusic.getWatchIDMiniplayer();
+  }
+
+  private static getWatchIDMiniplayer() {
+    return document
+      .querySelector<HTMLAnchorElement>("a.ytp-title-link.yt-uix-sessionlink")
+      ?.href.match(/v=([^&#]{5,})/)?.[1];
   }
 }
