@@ -9,7 +9,7 @@ export let serverAddress: string = "localhost:8000";
 export const currentlyListening = new CurrentlyPlaying();
 
 export function connect() {
-  webSocket = new WebSocket(`ws://${serverAddress}`);
+  webSocket = new WebSocket(`wss://${serverAddress}`);
 
   webSocket.onopen = _event => {
     log.info("WebSocket connection established");

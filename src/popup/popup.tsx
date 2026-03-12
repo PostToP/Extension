@@ -6,7 +6,7 @@ import {CurrentlyPlayingContext} from "./context/CurrentlyPlayingContext";
 export async function sendIsMusicReview(watchID: string, isMusic: boolean) {
   const {authToken} = await chrome.storage.local.get("authToken");
   const address = await SettingsRepository.getSetting("serverAddress");
-  const url = `http://${address}/review/music`;
+  const url = `https://${address}/review/music`;
   fetch(url, {
     method: "POST",
     headers: {
@@ -24,7 +24,7 @@ export async function sendIsMusicReview(watchID: string, isMusic: boolean) {
 export async function deleteIsMusicReview(watchID: string) {
   const {authToken} = await chrome.storage.local.get("authToken");
   const address = await SettingsRepository.getSetting("serverAddress");
-  const url = `http://${address}/review/music`;
+  const url = `https://${address}/review/music`;
   fetch(url, {
     method: "DELETE",
     headers: {

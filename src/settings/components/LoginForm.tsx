@@ -4,7 +4,7 @@ import {SettingsRepository} from "../../common/repository/SettingsRepository";
 
 async function sendLoginRequest(username: string, password: string) {
   const address = await SettingsRepository.getSetting("serverAddress");
-  const url = `http://${address}/auth`;
+  const url = `https://${address}/auth`;
   const body = JSON.stringify({
     username: username,
     password: password,

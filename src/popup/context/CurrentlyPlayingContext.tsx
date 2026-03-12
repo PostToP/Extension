@@ -11,7 +11,7 @@ export const CurrentlyPlayingContext = createContext<CurrentlyPlaying | null>(nu
 async function submitReview(watchID: string, isMusic: boolean) {
   const token = await AuthRepository.getAuthToken();
   const address = await SettingsRepository.getSetting("serverAddress");
-  const url = `http://${address}/review/music`;
+  const url = `https://${address}/review/music`;
   const res = await fetch(url, {
     method: "POST",
     headers: {
