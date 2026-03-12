@@ -61,27 +61,46 @@ export function LoginForm() {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-3 text-sm text-text-primary">
       {loggedIn ? (
-        <p>
-          Logged in as TODO{" "}
-          <button type="button" onClick={logOut}>
+        <div className="flex items-center justify-between gap-3">
+          <div className="text-text-secondary">Logged in</div>
+          <button
+            type="button"
+            className="px-3 py-1.5 text-sm rounded-md bg-[var(--color-accent-tertiary)] text-[var(--color-background)] hover:cursor-pointer"
+            onClick={logOut}>
             Log out
           </button>
-        </p>
+        </div>
       ) : (
-        <form onSubmit={handleLoginSubmit}>
-          <p>
-            Username: <input type="text" name="username"></input>
-          </p>
-          <p>
-            Password: <input type="password" name="password"></input>
-          </p>
-          <p>
-            <button type="submit">Login</button>
-          </p>
+        <form onSubmit={handleLoginSubmit} className="flex flex-col gap-3">
+          <label className="flex flex-col gap-1">
+            <span className="text-text-secondary">Username</span>
+            <input
+              className="px-3 py-2 rounded-md bg-surface border border-border text-text-primary"
+              type="text"
+              name="username"
+              required
+            />
+          </label>
+
+          <label className="flex flex-col gap-1">
+            <span className="text-text-secondary">Password</span>
+            <input
+              className="px-3 py-2 rounded-md bg-surface border border-border text-text-primary"
+              type="password"
+              name="password"
+              required
+            />
+          </label>
+
+          <button
+            type="submit"
+            className="inline-flex justify-center px-4 py-2 rounded-md text-sm font-medium bg-[var(--color-accent-primary)] text-[var(--color-background)] hover:cursor-pointer">
+            Login
+          </button>
         </form>
       )}
-    </>
+    </div>
   );
 }

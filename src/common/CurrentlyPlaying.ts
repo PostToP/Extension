@@ -15,6 +15,7 @@ export class CurrentlyPlaying {
   isMusic?: {
     is_music: boolean;
     reviewed: boolean;
+    user_submission?: boolean;
   };
   length?: number;
   currentTime?: number;

@@ -34,14 +34,12 @@ export default function Timeline({
 
   return (
     <div className="w-full px-4 py-2">
-      <div className="relative w-full rounded-full h-1.5 bg-gray-700">
+      <div className="relative w-full rounded-full h-1.5 bg-surface-secondary">
         <div
-          className={`h-1.5 rounded-full w-full ${
-            isRunning ? "bg-gradient-to-r from-red-500 to-red-700" : "bg-gray-400"
-          }`}
+          className={`h-1.5 rounded-full w-full ${isRunning ? "bg-accent-primary" : "bg-disabled"}`}
           style={{maxWidth: `${progress}%`}}>
           <div
-            className={`absolute size-3 rounded-full top-1/2 -translate-y-1/2 -translate-x-1/2 ${isRunning ? "bg-gradient-to-r from-red-500 to-red-700" : "bg-gray-400"}`}
+            className={`absolute size-3 rounded-full top-1/2 -translate-y-1/2 -translate-x-1/2 ${isRunning ? "bg-accent-primary" : "bg-disabled"}`}
             style={{left: `${progress}%`}}></div>
         </div>
       </div>
