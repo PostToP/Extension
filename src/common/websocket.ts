@@ -44,6 +44,7 @@ export interface VideoResponseData extends WebsocketData {
   coverImage: string;
   isMusic: boolean;
   NER: any;
+  genres: string[];
 }
 
 export interface ListeingData extends WebsocketData {

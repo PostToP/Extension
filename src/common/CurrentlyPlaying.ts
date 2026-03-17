@@ -20,6 +20,7 @@ export class CurrentlyPlaying {
   length?: number;
   currentTime?: number;
   updatedAt?: number;
+  genres?: string[];
   NER?: {
     ORIGINAL_AUTHOR: string[];
     TITLE: string[];
@@ -45,6 +46,7 @@ export class CurrentlyPlaying {
     newCurrentlyPlaying.currentTime = copy.currentTime;
     newCurrentlyPlaying.updatedAt = copy.updatedAt;
     newCurrentlyPlaying.NER = copy.NER;
+    newCurrentlyPlaying.genres = copy.genres;
     return newCurrentlyPlaying;
   }
 
@@ -61,6 +63,7 @@ export class CurrentlyPlaying {
     this.time = args.time ?? this.currentTime;
     this.updatedAt = args.updatedAt ?? this.updatedAt;
     this.NER = args.NER ?? this.NER;
+    this.genres = args.genres ?? this.genres;
     this.update();
   }
 
@@ -115,6 +118,7 @@ export class CurrentlyPlaying {
     this.currentTime = undefined;
     this.updatedAt = undefined;
     this.NER = undefined;
+    this.genres = undefined;
     this.update();
   }
 
@@ -131,6 +135,7 @@ export class CurrentlyPlaying {
       currentTime: this.currentTime,
       updatedAt: this.updatedAt,
       NER: this.NER,
+      genres: this.genres,
     };
   }
 }

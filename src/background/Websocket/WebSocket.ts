@@ -64,6 +64,7 @@ async function handleMusicQueryResponse(data: any) {
     artistName: video.artist.name,
     isMusic: video.isMusic,
     NER: video.NER,
+    genres: video.genres,
   });
   chromeSendMessage("VIDEO_UPDATE", {
     value: currentlyListening.safe(),

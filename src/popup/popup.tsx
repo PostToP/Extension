@@ -157,6 +157,10 @@ export default function Popup() {
                 <span className={"font-medium text-text-primary"}>User submission</span>
                 <span className={"text-text-secondary"}>{reviewInfo?.user_submission ? "yes" : "no"}</span>
 
+                
+                <span className={"font-medium text-text-primary"}>Genres</span>
+                <span className={"text-text-secondary"}>{currentlyPlaying.genres?.join(", ") ?? "Fetching genres..."}</span>
+
                 <span className={"font-medium text-text-primary"}>Length</span>
                 <span className={"text-text-secondary"}>{formatSeconds(currentlyPlaying.length)}</span>
 
