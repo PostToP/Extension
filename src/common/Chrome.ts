@@ -36,7 +36,7 @@ export interface IChromeResponse<T = any> {
 
 export type ChromeMessageFrom = "BACKGROUND" | "POPUP" | "CONTENT_SCRIPT" | "SETTINGS";
 
-export type GetChromeMessage = "GET_CURRENTLY_PLAYING" | "GET_WEBSOCKET_STATUS";
+export type GetChromeMessage = "GET_CURRENTLY_PLAYING" | "GET_WEBSOCKET_STATUS" | "RESTART_WEBSOCKET";
 
 export type ActionChromeMessage = "VIDEO_UPDATE" | "LOG";
 

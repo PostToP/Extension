@@ -31,6 +31,10 @@ chromeReceiveMessage("GET_CURRENTLY_PLAYING", () => ({
   value: currentlyListening.safe(),
 }));
 
+chromeReceiveMessage("RESTART_WEBSOCKET", () => {
+  restartWebsocket();
+});
+
 SettingsRepository.observeSetting("serverAddress").then(value => {
   changeServerAddress(value);
   restartWebsocket();

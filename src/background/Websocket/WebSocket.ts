@@ -8,7 +8,17 @@ export let webSocket: WebSocket | null = null;
 export let serverAddress: string = "localhost:8000";
 export const currentlyListening = new CurrentlyPlaying();
 
-export function connect() {
+export async function connect() {
+  if (webSocket) {
+    log.warn("WebSocket already connected");
+    return;
+  }
+  const token = await chrome.storage.local.get(["authToken"]);
+  if (!token.authToken) {
+    log.warn("No auth token found, cannot connect to WebSocket");
+    return;
+  }
+
   webSocket = new WebSocket(`wss://${serverAddress}`);
 
   webSocket.onopen = _event => {

@@ -1,6 +1,7 @@
 import {useEffect, useState} from "preact/compat";
 import {AuthRepository} from "../../common/repository/AuthRepository";
 import {SettingsRepository} from "../../common/repository/SettingsRepository";
+import {chromeSendMessage} from "../Chrome";
 
 async function sendLoginRequest(username: string, password: string) {
   const address = await SettingsRepository.getSetting("serverAddress");
@@ -41,6 +42,7 @@ export function LoginForm() {
     AuthRepository.removeAuthToken().then(() => {
       setLoggedIn(false);
       alert("Logged out successfully!");
+      chromeSendMessage("RESTART_WEBSOCKET");
     });
   }
 
@@ -53,6 +55,7 @@ export function LoginForm() {
       .then(() => {
         setLoggedIn(true);
         alert("Login successful!");
+        chromeSendMessage("RESTART_WEBSOCKET");
       })
       .catch(error => {
         console.error("Login error:", error);
