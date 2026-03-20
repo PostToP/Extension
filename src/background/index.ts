@@ -5,30 +5,33 @@ import "./Websocket/WebSocketListener";
 let listenOnYt = true;
 let listenOnYtMusic = true;
 
+function injectScript(tabId: any) {
+  chrome.scripting.executeScript({
+    target: {tabId: tabId},
+    files: ["js/content_script.js"],
+  });
+}
+
+function isTargetUrl(url: string): boolean {
+  return (
+    (listenOnYt && url.startsWith("https://www.youtube.com/watch?v=")) ||
+    (listenOnYtMusic && url.startsWith("https://music.youtube.com/")) ||
+    url.startsWith("http://localhost:3000/") ||
+    url.startsWith("https://posttop.devla.dev/")
+  );
+}
+
 function handleUpdated(tabId: any, changeInfo: any, tabInfo: any) {
-  if (changeInfo.status !== "complete") return;
-  if (
-    (listenOnYtMusic && tabInfo.url.startsWith("https://music.youtube.com/")) ||
-    (listenOnYt && tabInfo.url.startsWith("https://www.youtube.com/watch?v="))
-  ) {
-    chrome.scripting.executeScript({
-      target: {tabId: tabId},
-      files: ["js/content_script.js"],
-    });
+  if (changeInfo.status === "complete" && isTargetUrl(tabInfo.url)) {
+    injectScript(tabId);
   }
 }
 
 function injectIntoExistingTabs() {
   chrome.tabs.query({}, (tabs: any) => {
     tabs.forEach((tab: any) => {
-      if (
-        (listenOnYtMusic && tab.url.startsWith("https://music.youtube.com/")) ||
-        (listenOnYt && tab.url.startsWith("https://www.youtube.com/watch?v="))
-      ) {
-        chrome.scripting.executeScript({
-          target: {tabId: tab.id},
-          files: ["js/content_script.js"],
-        });
+      if (isTargetUrl(tab.url)) {
+        injectScript(tab.id);
       }
     });
   });
