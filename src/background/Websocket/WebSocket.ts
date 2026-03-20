@@ -5,7 +5,7 @@ import {updateIcon} from "../icon";
 import {log} from "../log";
 
 export let webSocket: WebSocket | null = null;
-export let serverAddress: string = "localhost:8000";
+export let serverAddress: string = "posttopserver.devla.dev";
 export const currentlyListening = new CurrentlyPlaying();
 
 export async function connect() {

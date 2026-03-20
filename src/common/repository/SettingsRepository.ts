@@ -5,9 +5,9 @@ interface Settings {
 }
 
 const DEFAULT_SETTINGS: Settings = {
-  serverAddress: "localhost:8000",
-  yt: false,
-  ytmusic: false,
+  serverAddress: "posttopserver.devla.dev",
+  yt: true,
+  ytmusic: true,
 };
 
 export class SettingsRepository {
