@@ -20,7 +20,10 @@ export class CurrentlyPlaying {
   length?: number;
   currentTime?: number;
   updatedAt?: number;
-  genres?: string[];
+  genres?: {
+    genres: string[];
+    aggregated_logits: Record<string, number>;
+  };
   NER?: {
     ORIGINAL_AUTHOR: string[];
     TITLE: string[];
