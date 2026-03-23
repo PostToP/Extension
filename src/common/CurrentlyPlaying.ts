@@ -63,7 +63,9 @@ export class CurrentlyPlaying {
     this.isMusic = args.isMusic ?? this.isMusic;
     this.length = args.length ?? this.length;
     this.currentTime = args.currentTime ?? this.currentTime;
-    this.time = args.time ?? this.currentTime;
+    if (args.time !== undefined) {
+      this.time = args.time ?? this.currentTime;
+    }
     this.updatedAt = args.updatedAt ?? this.updatedAt;
     this.NER = args.NER ?? this.NER;
     this.genres = args.genres ?? this.genres;
